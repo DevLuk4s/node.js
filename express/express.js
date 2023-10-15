@@ -6,12 +6,12 @@ app.get("/", function (req, res) {
 });
 
 app.get("/sobre", function (req, res) {
-    res.send("Minha pagina sobre");
-  });
+  res.send("Minha pagina sobre");
+});
 
-  app.get("/blog", function (req, res) {
-    res.send("Minha pagina blog");
-  });
+app.get("/blog", function (req, res) {
+  res.send("Minha pagina blog");
+});
 
 app.listen(8081, function () {
   console.log("Servidor rodado na url http://localhost:8081");
