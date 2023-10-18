@@ -16,7 +16,7 @@ const sequelize = new Sequelize("test", "root", "1234", {
 
 // Routes
 app.get("/card", function (req, res) {
-  res.render("formulario");
+  res.render("formulario.handlebars");
 });
 
 app.listen(8081, function () {
