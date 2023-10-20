@@ -13,12 +13,27 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Routes
+app.get("/", function (req, res) {
+  res.render("home");
+});
+
 app.get("/card", function (req, res) {
   res.render("formulario.handlebars");
 });
 
+// Post
+const Post = require("./models/Post");
 app.post("/add", function (req, res) {
-  res.send("Texto: " + req.body.titulo + "Conteudo: " + req.body.conteudo);
+  Post.create({
+    titulo: req.body.titulo,
+    conteudo: req.body.conteudo,
+  })
+    .then(function () {
+      res.redirect("/");
+    })
+    .catch(function (erro) {
+      res.send("Houve um erro: " + erro);
+    });
 });
 
 app.listen(8081, function () {

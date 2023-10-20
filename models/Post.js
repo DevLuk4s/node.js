@@ -9,11 +9,4 @@ const Post = db.sequelize.define("postagens", {
   },
 });
 
-// Sincronize o modelo com o banco de dados
-Post.sync({ force: true })
-  .then(() => {
-    console.log("Tabela Postagens criada com sucesso.");
-  })
-  .catch((err) => {
-    console.error("Erro ao criar a tabela Postagens:", err);
-  });
+module.exports = Post
