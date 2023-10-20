@@ -7,16 +7,18 @@ const handlebars = require("express-handlebars");
 app.engine("handlebars", handlebars.engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Connection to the MySQL database
-const Sequelize = require("sequelize");
-const sequelize = new Sequelize("test", "root", "1234", {
-  host: "localhost",
-  dialect: "mysql",
-});
+//body parser
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Routes
 app.get("/card", function (req, res) {
   res.render("formulario.handlebars");
+});
+
+app.post("/add", function (req, res) {
+  res.send("Texto: " + req.body.titulo + "Conteudo: " + req.body.conteudo);
 });
 
 app.listen(8081, function () {
